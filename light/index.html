@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="description" content="Light theme design system demo with reusable tokens and components.">
+  <title>Light Design System — Black × White</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Design system home">Form / Function</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#foundations">Foundations</a>
+        <a href="#components">Components</a>
+        <a href="#tokens">Tokens</a>
+      </nav>
+      <a class="theme-link" href="../dark/index.html" aria-label="Switch to dark theme">◐ <span>Dark theme</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero container">
+      <p class="eyebrow">LIGHT THEME · DESIGN SYSTEM</p>
+      <h1>Clarity in every detail.</h1>
+      <p class="lead">A calm, spacious interface system built around precise typography, purposeful contrast, and quietly confident components.</p>
+      <div class="cluster" style="justify-content:center">
+        <a class="btn btn--primary" href="#components">Explore components <span aria-hidden="true">↗</span></a>
+        <a class="btn btn--secondary" href="#foundations">View foundations</a>
+      </div>
+    </section>
+
+    <section class="container section--compact" aria-label="Theme showcase">
+      <div class="showcase">
+        <article class="panel reveal">
+          <p class="eyebrow">01 / FOUNDATION</p>
+          <h3>Light, without the noise.</h3>
+          <p>White surfaces, gentle neutrals, and fine borders keep the content in focus.</p>
+          <div class="cluster" style="margin-top:24px"><span class="pill pill--active">Selected</span><span class="pill">Neutral</span><span class="pill">Quiet</span></div>
+        </article>
+        <article class="panel panel--inverse reveal">
+          <p class="eyebrow">02 / CONTRAST</p>
+          <h3>A little contrast goes far.</h3>
+          <p>Use dark feature panels intentionally to create rhythm and visual emphasis.</p>
+          <a class="btn btn--inverse" href="#tokens" style="margin-top:12px">Explore tokens <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section id="foundations" class="section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">FOUNDATIONS</p>
+          <h2>Every choice has a reason.</h2>
+          <p>Consistent rules make the interface feel intentional—from the smallest control to the largest hero.</p>
+        </div>
+        <div class="card-grid">
+          <article class="card reveal"><div class="card-icon" aria-hidden="true">Aa</div><h3>Typography</h3><p>System sans-serif, confident headlines, short readable copy, and a clear size hierarchy.</p></article>
+          <article class="card reveal"><div class="card-icon" aria-hidden="true">▦</div><h3>Spacing & grid</h3><p>An 8px rhythm, centered content width, responsive gutters, and generous section breathing room.</p></article>
+          <article class="card reveal"><div class="card-icon" aria-hidden="true">◯</div><h3>Shape & depth</h3><p>Rounded media, pill controls, fine borders, and shadows used only when they improve clarity.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="components" class="section" style="background:var(--color-canvas-subtle)">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">COMPONENTS</p>
+          <h2>Small details. One system.</h2>
+          <p>Reusable patterns for marketing pages, SaaS products, dashboards, and settings screens.</p>
+        </div>
+        <article class="panel reveal" style="background:var(--color-surface);margin-bottom:16px">
+          <h3>Buttons</h3>
+          <p>Clear action hierarchy, comfortable hit areas, and restrained motion.</p>
+          <div class="control-demo">
+            <button class="btn btn--primary" data-demo-action>Primary action ↗</button>
+            <button class="btn btn--secondary" data-demo-action>Secondary action</button>
+            <button class="btn btn--ghost" data-demo-action>Quiet action</button>
+            <button class="btn btn--secondary" disabled>Disabled</button>
+          </div>
+          <p id="demo-feedback" class="small muted" aria-live="polite" style="margin:18px 0 0"></p>
+        </article>
+        <div class="showcase">
+          <article class="panel reveal" style="background:var(--color-surface)">
+            <h3>Form controls</h3>
+            <p>Labels remain visible; focus states are easy to identify.</p>
+            <div class="field">
+              <label for="sample-email">Email address</label>
+              <input id="sample-email" class="input" type="email" placeholder="you@example.com" autocomplete="email">
+              <span class="small muted">A short helper message can go here.</span>
+            </div>
+          </article>
+          <article class="panel reveal" style="background:var(--color-surface)">
+            <h3>Selection pills</h3>
+            <p>Use restrained pills for filters, segmented choices, or compact states.</p>
+            <div class="cluster"><button class="pill pill--active" aria-pressed="true">Overview</button><button class="pill" aria-pressed="false">Details</button><button class="pill" aria-pressed="false">Activity</button></div>
+            <hr class="rule">
+            <p class="small muted">Selected state should be visible beyond color alone when needed.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tokens" class="section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">COLOR TOKENS</p>
+          <h2>A small, purposeful palette.</h2>
+          <p>Use semantic tokens in components instead of hardcoding colors across the product.</p>
+        </div>
+        <div class="swatches"><div class="swatch reveal"><div class="swatch-color" style="background:#FFFFFF"></div><div class="swatch-info"><strong>Canvas</strong><code>#FFFFFF</code><br><span class="muted">Primary background</span></div></div>
+<div class="swatch reveal"><div class="swatch-color" style="background:#F5F5F7"></div><div class="swatch-info"><strong>Soft canvas</strong><code>#F5F5F7</code><br><span class="muted">Subtle section</span></div></div>
+<div class="swatch reveal"><div class="swatch-color" style="background:#1D1D1F"></div><div class="swatch-info"><strong>Text</strong><code>#1D1D1F</code><br><span class="muted">Primary text</span></div></div>
+<div class="swatch reveal"><div class="swatch-color" style="background:#6E6E73"></div><div class="swatch-info"><strong>Secondary</strong><code>#6E6E73</code><br><span class="muted">Supporting text</span></div></div>
+<div class="swatch reveal"><div class="swatch-color" style="background:#D2D2D7"></div><div class="swatch-info"><strong>Border</strong><code>#D2D2D7</code><br><span class="muted">Fine separators</span></div></div>
+<div class="swatch reveal"><div class="swatch-color" style="background:#0071E3"></div><div class="swatch-info"><strong>Accent</strong><code>#0071E3</code><br><span class="muted">Primary actions</span></div></div>
+<div class="swatch reveal"><div class="swatch-color" style="background:#000000"></div><div class="swatch-info"><strong>Inverse</strong><code>#000000</code><br><span class="muted">Dark sections</span></div></div>
+<div class="swatch reveal"><div class="swatch-color" style="background:#0071E3"></div><div class="swatch-info"><strong>Focus</strong><code>#0071E3</code><br><span class="muted">Keyboard focus</span></div></div></div>
+        <hr class="rule">
+        <div class="showcase">
+          <article class="panel reveal"><p class="eyebrow">TYPE SCALE</p><p class="text-display-lg" style="font-size:clamp(2.5rem,5vw,4rem);margin-bottom:12px;font-weight:700;line-height:1.02">Display specimen</p><h2>Section heading</h2><h3>Component heading</h3><p class="lead">Lead paragraph for key supporting context.</p><p class="small muted">Caption / helper text</p></article>
+          <article class="panel reveal"><p class="eyebrow">RADIUS & SPACING</p><div class="cluster"><span class="pill">12px control</span><span class="pill">20px card</span><span class="pill">24px media</span></div><p style="margin-top:24px">Use <code>4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96 / 128px</code> as the base spacing rhythm.</p><p class="small muted">Token source: <code>light/tokens.css</code></p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--compact">
+      <div class="container">
+        <article class="panel panel--inverse center reveal">
+          <p class="eyebrow">THE DESIGN PRINCIPLE</p>
+          <h2 style="font-size:clamp(2rem,4vw,3.5rem)">Less decoration.<br>More intention.</h2>
+          <p>Build a clear hierarchy. Let the product and content do the talking.</p>
+          <a class="btn btn--inverse" href="../dark/index.html">Compare dark theme ↗</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>Form / Function — Light design system</span>
+      <span>Accessible · Responsive · Token-driven</span>
+    </div>
+  </footer>
+</body>
+</html>

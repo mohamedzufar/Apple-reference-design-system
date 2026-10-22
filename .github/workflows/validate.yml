@@ -1,0 +1,31 @@
+name: Static validation
+on:
+  push:
+  pull_request:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate project structure and local links
+        run: python tools/scripts/validate_project.py
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check assets/landing/studio.js
+          node --check demos/product-story-studio/app.js
+
+      - name: Run accessibility attribute audit
+        run: python tools/scripts/audit_accessibility.py
+
+      - name: Check for common HTML issues
+        run: python tools/scripts/audit_html.py

@@ -1,0 +1,22 @@
+{
+  "name": "mohamedzufar-design-tools",
+  "owner": {
+    "name": "mohamedzufar"
+  },
+  "metadata": {
+    "description": "Reusable Claude Code plugins for Apple-inspired web design workflows",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "apple-design-system",
+      "source": "./plugins/apple-design-system",
+      "description": "Build responsive, accessible, Apple-inspired product storytelling websites using a reference-informed design workflow.",
+      "version": "1.0.0",
+      "author": {
+        "name": "mohamedzufar"
+      },
+      "license": "MIT"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Light navigation and footer component specimens for the Apple-inspired design system."><title>Light Navigation & Footer System</title><link rel="stylesheet" href="tokens.css"><link rel="stylesheet" href="styles.css"></head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="container site-nav">
+    <a class="site-nav__brand" href="#top">Form / Function</a>
+    <nav class="site-nav__links" aria-label="Primary navigation">
+      <a href="#product">Product</a><a href="#features">Features</a><a href="#resources">Resources</a><a href="#pricing">Pricing</a>
+    </nav>
+    <div class="site-nav__actions">
+      <a class="site-nav__optional" href="../references/apple-reference-corpus/ANALYSIS.md" style="font-size:13px;color:var(--color-text-secondary)">Design notes</a>
+      <a class="btn btn--primary btn--small" href="#get-started">Get started</a>
+      <button class="site-nav__menu-button" data-menu-trigger aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+  <div class="container mobile-menu" id="mobile-menu" data-mobile-menu data-open="false">
+    <nav aria-label="Mobile navigation">
+      <a href="#product">Product</a><a href="#features">Features</a><a href="#resources">Resources</a><a href="#pricing">Pricing</a><a href="../references/apple-reference-corpus/ANALYSIS.md">Design notes</a><a href="#get-started">Get started ↗</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="container hero" id="product">
+    <p class="eyebrow">NAVIGATION + FOOTER SYSTEM</p>
+    <h1>Thoughtful tools. Less friction.</h1>
+    <p class="lead">A complete site-chrome reference: desktop capsule navigation, responsive mobile menu, grouped footer links, legal links, and copyright hierarchy.</p>
+    <div class="cluster" style="justify-content:center"><a class="btn btn--primary" href="#features">Explore the system ↘</a><a class="btn btn--secondary" href="../dark/navigation-footer.html">Switch to dark theme</a></div>
+  </section>
+  <section class="container section" id="features">
+    <div class="section-heading"><p class="eyebrow">PAGE STRUCTURE</p><h2>Navigation stays quiet.<br>Content leads.</h2><p>Keep the global header predictable and let each page's primary message carry the visual weight.</p></div>
+    <div class="showcase"><article class="panel"><p class="eyebrow">01 / HEADER</p><h3>Few primary destinations</h3><p>Brand, 3–6 main links, optional sign-in, and one primary action. Secondary destinations belong in the footer.</p></article><article class="panel panel--inverse"><p class="eyebrow">02 / FOOTER</p><h3>Organized, not crowded</h3><p>Product, resources, company, and legal groups, followed by a clear copyright and policy row.</p></article></div>
+  </section>
+  <section class="container section--compact" id="resources"><div class="section-heading"><p class="eyebrow">LINK HIERARCHY</p><h2>Footer link groups</h2><p>Use only destinations that exist and policies the company can accurately stand behind.</p></div>
+    <div class="card-grid">
+      <article class="card"><h3>Product</h3><p>Overview, Features, Pricing, Changelog</p></article>
+      <article class="card"><h3>Resources</h3><p>Documentation, Guides, Help center, Contact</p></article>
+      <article class="card"><h3>Company & legal</h3><p>About, Privacy Policy, Terms, Cookie preferences where applicable</p></article>
+    </div>
+  </section>
+  <section class="container section--compact" id="pricing"><div class="panel"><p class="eyebrow">LINK BEHAVIOR</p><h3>Clear in every state.</h3><p>Hover changes contrast, keyboard focus remains visible, and mobile links get comfortable tap spacing. No legal link should depend on hover to be discoverable.</p></div></section>
+  <section class="container section--compact" id="get-started"><div class="panel panel--inverse center"><h2>Make the structure feel effortless.</h2><p>One clear navigation system. One footer hierarchy. Consistent behavior across every page.</p><a class="btn btn--inverse" href="#top">Back to top ↑</a></div></section>
+</main>
+<footer class="site-footer" id="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand"><a class="site-nav__brand" href="#top">Form / Function</a><p>Thoughtful tools. Less friction. A considered interface foundation for modern digital products.</p><div class="footer-social"><a href="../references/apple-reference-corpus/REFERENCE_CATALOG.md">Reference catalog</a><a href="../references/apple-reference-corpus/ANALYSIS.md">Pattern analysis</a></div></div>
+      <div class="footer-columns">
+        <div class="footer-column"><h3>Product</h3><a href="#product">Overview</a><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="../docs/design-system/FOUNDATIONS.md">Foundations</a></div>
+        <div class="footer-column"><h3>Resources</h3><a href="../docs/design-system/FOUNDATIONS.md">Foundations</a><a href="../docs/design-system/COMPONENTS.md">Components</a><a href="reference-patterns.html#faq">FAQ patterns</a><a href="../references/apple-reference-corpus/REFERENCE_CATALOG.md">Reference index</a></div>
+        <div class="footer-column"><h3>Company</h3><a href="index.html#top">About</a><a href="../references/apple-reference-corpus/REFERENCE_CATALOG.md">Reference catalog</a><a href="../references/apple-reference-corpus/ANALYSIS.md">Analysis notes</a></div>
+        <div class="footer-column"><h3>Legal</h3><a href="privacy-policy.html">Privacy policy</a><a href="terms-of-service.html">Terms of service</a><a href="cookie-preferences.html">Cookie preferences</a><a href="accessibility.html">Accessibility</a></div>
+      </div>
+    </div>
+    <div class="footer-disclosure">
+      <details><summary>Product <span>＋</span></summary><div class="footer-column"><a href="#product">Overview</a><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="../docs/design-system/FOUNDATIONS.md">Foundations</a></div></details>
+      <details><summary>Resources <span>＋</span></summary><div class="footer-column"><a href="../docs/design-system/FOUNDATIONS.md">Foundations</a><a href="../docs/design-system/COMPONENTS.md">Components</a><a href="reference-patterns.html#faq">FAQ patterns</a><a href="../references/apple-reference-corpus/REFERENCE_CATALOG.md">Reference index</a></div></details>
+      <details><summary>Company <span>＋</span></summary><div class="footer-column"><a href="index.html#top">About</a><a href="../references/apple-reference-corpus/REFERENCE_CATALOG.md">Reference catalog</a><a href="../references/apple-reference-corpus/ANALYSIS.md">Analysis notes</a></div></details>
+      <details><summary>Legal <span>＋</span></summary><div class="footer-column"><a href="privacy-policy.html">Privacy policy</a><a href="terms-of-service.html">Terms of service</a><a href="cookie-preferences.html">Cookie preferences</a><a href="accessibility.html">Accessibility</a></div></details>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copyright">Copyright © <span id="year">2026</span> Form / Function. All rights reserved.</span>
+      <nav class="footer-legal" aria-label="Legal links"><a href="privacy-policy.html">Privacy</a><a href="terms-of-service.html">Terms</a><a href="cookie-preferences.html">Cookie preferences</a><a href="accessibility.html">Accessibility</a></nav>
+      <span class="footer-copyright">Made with intention.</span>
+    </div>
+  </div>
+</footer>
+<script src="script.js" defer></script>
+</body></html>

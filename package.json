@@ -1,0 +1,23 @@
+{
+  "name": "apple-inspired-design-system",
+  "version": "1.0.0",
+  "description": "A reference-informed design system and Claude skill for building cinematic, Apple-inspired product stories.",
+  "scripts": {
+    "validate": "python tools/scripts/validate_project.py",
+    "audit:a11y": "python tools/scripts/audit_accessibility.py",
+    "audit:html": "python tools/scripts/audit_html.py",
+    "check:js": "node --check assets/landing/studio.js && node --check demos/product-story-studio/app.js",
+    "test": "npm run validate && npm run audit:html && npm run audit:a11y && npm run check:js",
+    "serve": "npx serve . -p 8000"
+  },
+  "keywords": [
+    "apple-design-system",
+    "claude-skill",
+    "design-system",
+    "storytelling",
+    "motion",
+    "vanilla-css"
+  ],
+  "author": "Reference Studio Contributors",
+  "license": "MIT"
+}

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reference Patterns — Design System</title>
+<link rel="stylesheet" href="tokens.css"><link rel="stylesheet" href="styles.css">
+<meta name="description" content="Reference UI patterns — navigation, carousels, feature explorers and more.">
+<style>
+.pattern-intro{max-width:850px;margin:0 auto;text-align:center;padding:80px 0 54px}
+.pattern-intro h1{font-size:clamp(2.8rem,6vw,5.3rem);line-height:.99;letter-spacing:-.05em;margin:12px 0 20px}
+.pattern-intro p{max-width:680px;margin:0 auto;color:var(--color-text-secondary);font-size:18px;line-height:1.55}
+.pattern-section{padding:68px 0;border-top:1px solid var(--color-border-subtle)}
+.pattern-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:30px}
+.pattern-head h2{font-size:clamp(2rem,4vw,3.4rem);line-height:1.04;letter-spacing:-.04em;margin:8px 0}
+.pattern-head p{max-width:500px;color:var(--color-text-secondary);margin:0}
+.value-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.value-card{min-height:230px;padding:26px;border:1px solid var(--color-border-subtle);border-radius:24px;background:var(--color-surface)}
+.value-icon{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--color-canvas-subtle);font-size:20px;margin-bottom:28px}
+.value-card h3{font-size:22px;letter-spacing:-.025em;margin:0 0 9px}
+.value-card p{color:var(--color-text-secondary);line-height:1.5;margin:0}
+.value-card a{display:inline-flex;margin-top:18px;color:var(--color-accent);text-decoration:none;font-weight:600}
+.faq-wrap{border-top:1px solid var(--color-border);margin-top:22px}
+.faq-tools{display:flex;justify-content:flex-end;margin-bottom:10px}
+.faq-tools button{border:0;background:none;color:var(--color-accent);cursor:pointer;font:inherit}
+.faq-item{border-bottom:1px solid var(--color-border);padding:0}
+.faq-question{display:flex;align-items:center;justify-content:space-between;gap:20px;width:100%;padding:22px 2px;border:0;background:transparent;color:var(--color-text);font:600 19px/1.35 var(--font-sans);text-align:left;cursor:pointer}
+.faq-question .plus{font-size:24px;font-weight:400;transition:transform .18s ease}
+.faq-question[aria-expanded="true"] .plus{transform:rotate(45deg)}
+.faq-answer{padding:0 42px 22px 2px;color:var(--color-text-secondary);max-width:780px;line-height:1.6}
+.segmented{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:var(--color-canvas-subtle);border:1px solid var(--color-border-subtle);flex-wrap:wrap}
+.segmented button{border:0;background:transparent;color:var(--color-text-secondary);padding:10px 16px;border-radius:999px;cursor:pointer;font:500 14px var(--font-sans)}
+.segmented button[aria-pressed="true"]{background:var(--color-inverse);color:var(--color-text-on-inverse)}
+.media-stage{background:var(--color-canvas-subtle);border-radius:28px;padding:24px;overflow:hidden}
+.media-art{min-height:310px;border-radius:20px;background:radial-gradient(ellipse at 50% 45%,#53535a 0%,#1b1b20 48%,#080809 100%);display:grid;place-items:center;position:relative;color:#fff}
+.media-art::before{content:"";width:min(56%,460px);aspect-ratio:16/9;border:2px solid rgba(255,255,255,.55);border-radius:26px;background:linear-gradient(140deg,rgba(255,255,255,.14),rgba(255,255,255,.02));box-shadow:0 25px 80px rgba(0,0,0,.28);transform:rotate(-2deg)}
+.media-art__label{position:absolute;left:20px;bottom:18px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.media-toggle{position:absolute;right:18px;bottom:18px;border:1px solid rgba(255,255,255,.5);border-radius:999px;background:rgba(0,0,0,.42);color:white;width:44px;height:44px;cursor:pointer}
+.media-caption{text-align:center;max-width:620px;margin:22px auto 0;color:var(--color-text-secondary)}
+.media-caption strong{display:block;color:var(--color-text);font-size:20px;margin-bottom:6px}
+.explorer{display:grid;grid-template-columns:minmax(220px,.7fr) 1.3fr;gap:28px;align-items:stretch;padding:24px;border-radius:28px;background:var(--color-canvas-subtle)}
+.explorer-options{display:flex;flex-direction:column;gap:8px}
+.explorer-option{border:1px solid var(--color-border-subtle);border-radius:999px;background:var(--color-surface);color:var(--color-text);padding:14px 18px;text-align:left;cursor:pointer;font:500 15px var(--font-sans)}
+.explorer-option[aria-pressed="true"]{background:var(--color-inverse);color:var(--color-text-on-inverse);border-color:transparent}
+.explorer-demo{position:relative;min-height:270px;display:grid;place-items:center;background:var(--color-surface);border:1px solid var(--color-border-subtle);border-radius:22px;overflow:hidden}
+.explorer-device{width:58%;max-width:280px;aspect-ratio:4/3;border-radius:24px;background:linear-gradient(145deg,#c5d8e8,#e9edf0 48%,#7b8b9b);box-shadow:0 22px 60px rgba(0,0,0,.16);transition:transform .22s ease,background .22s ease}
+.explorer-close{position:absolute;right:14px;top:14px;border:1px solid var(--color-border);background:var(--color-surface);color:var(--color-text);border-radius:50%;width:38px;height:38px;cursor:pointer}
+.explorer-status{font-size:13px;color:var(--color-text-secondary);margin-top:12px}
+.metrics{display:grid;grid-template-columns:1.1fr 1.9fr;gap:48px;align-items:start;padding:34px 0}
+.metrics-copy p{color:var(--color-text-secondary);line-height:1.6;max-width:420px}
+.metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.metric{padding:22px 0;border-top:1px solid var(--color-border)}
+.metric strong{display:block;font-size:clamp(2rem,4vw,3.8rem);letter-spacing:-.05em;line-height:1.05}
+.metric span{display:block;color:var(--color-text-secondary);font-size:14px;margin-top:9px}
+.dark-stage{background:#000;color:#f5f5f7;padding:44px;border-radius:28px}
+.dark-stage h3{font-size:clamp(2rem,4vw,3.4rem);line-height:1.02;letter-spacing:-.04em;max-width:700px;margin:10px 0 24px}
+.dark-stage p{color:#a1a1a6;max-width:620px;line-height:1.6}
+.dark-stage .media-art{min-height:240px;margin-top:28px}
+.pattern-note{font-size:13px;color:var(--color-text-secondary);margin-top:14px}
+@media(max-width:760px){
+ .pattern-intro{padding:52px 0 38px}.pattern-section{padding:48px 0}
+ .pattern-head{display:block}.pattern-head p{margin-top:14px}
+ .value-grid{grid-template-columns:1fr}
+ .explorer{grid-template-columns:1fr;padding:14px}.explorer-options{display:grid;grid-template-columns:1fr 1fr}
+ .metrics{grid-template-columns:1fr;gap:16px}.metric-grid{gap:12px}
+ .media-stage{padding:12px}.media-art{min-height:220px}
+ .dark-stage{padding:24px}
+}
+@media(prefers-reduced-motion:reduce){.faq-question .plus,.explorer-device{transition:none!important;scroll-behavior:auto!important}}
+</style></head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header"><div class="container site-nav">
+<a class="site-nav__brand" href="index.html">Form / Function</a>
+<nav class="site-nav__links" aria-label="Primary navigation"><a href="index.html">Foundations</a><a href="cards-carousel.html">Cards & rails</a><a href="navigation-footer.html">Navigation & footer</a></nav>
+<div class="site-nav__actions"><a class="btn btn--primary btn--small" href="#patterns">Explore patterns</a><button class="site-nav__menu-button" data-menu-trigger aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">☰</button></div>
+</div><div class="container mobile-menu" id="mobile-menu" data-mobile-menu data-open="false"><nav aria-label="Mobile navigation"><a href="index.html">Foundations</a><a href="cards-carousel.html">Cards & rails</a><a href="navigation-footer.html">Navigation & footer</a></nav></div></header>
+<main id="main" class="container">
+<section class="pattern-intro" id="top"><p class="eyebrow">REFERENCE PATTERN LIBRARY · REF-01—REF-30</p><h1>More than color.<br>A complete visual language.</h1><p>Missing patterns extracted from your 30 reference screenshots: FAQ rows, segmented media selectors, feature explorers, metrics, value cards, and cinematic media stages.</p><div class="cluster" style="justify-content:center;margin-top:24px"><a class="btn btn--primary" href="#patterns">Explore patterns ↓</a><a class="btn btn--secondary" href="../references/apple-reference-corpus/REFERENCE_TRACEABILITY.md">Reference traceability</a></div></section>
+
+<section class="pattern-section" id="patterns"><div class="pattern-head"><div><p class="eyebrow">REF-05</p><h2>Value cards</h2></div><p>Small groups, clear titles, restrained semantic accents, and an optional affordance. The accent is contextual—not a new global brand color.</p></div>
+<div class="value-grid"><article class="value-card"><div class="value-icon" aria-hidden="true">↗</div><h3>More control</h3><p>Short supporting copy explains the value without competing with the title.</p><a href="#metrics">Explore details <span aria-hidden="true"> ↗</span></a></article><article class="value-card"><div class="value-icon" aria-hidden="true">◌</div><h3>Less friction</h3><p>Use a simple icon and quiet surface; let spacing create the hierarchy.</p><a href="#media-selector">See how it works <span aria-hidden="true"> ↗</span></a></article><article class="value-card"><div class="value-icon" aria-hidden="true">＋</div><h3>Room to grow</h3><p>Keep card content concise and let the next section carry the story forward.</p><a href="#explorer">Explore options <span aria-hidden="true"> ↗</span></a></article></div></section>
+
+<section class="pattern-section" id="faq"><div class="pattern-head"><div><p class="eyebrow">REF-04</p><h2>Questions, without clutter.</h2></div><p>Full-width rows, fine dividers, a right-aligned chevron, and an expand/collapse-all control.</p></div><div class="faq-tools"><button type="button" data-faq-all aria-expanded="false">Expand all ＋</button></div><div class="faq-wrap">
+<div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a1"><span>How should I choose a section pattern?</span><span class="plus" aria-hidden="true">＋</span></button><div class="faq-answer" id="faq-a1" hidden>Choose the composition that serves the content: a media stage for immersive storytelling, a rail for multiple features, or a split metrics section for specifications.</div></div>
+<div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a2"><span>Are these exact Apple design tokens?</span><span class="plus" aria-hidden="true">＋</span></button><div class="faq-answer" id="faq-a2" hidden>No. These are approximate, reference-informed starting values. The supplied screenshots do not reveal the original source CSS or exact motion curves.</div></div>
+<div class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a3"><span>Should every section use a card?</span><span class="plus" aria-hidden="true">＋</span></button><div class="faq-answer" id="faq-a3" hidden>No. Use whitespace, typography, and background changes first. Add a card only when the content needs a distinct grouping or interaction.</div></div>
+</div></section>
+
+<section class="pattern-section" id="media-selector"><div class="pattern-head"><div><p class="eyebrow">REF-12 · REF-20 · REF-25</p><h2>One stage. Different stories.</h2></div><p>Segmented options update the selected state and explanatory caption together. The mock media stage is illustrative, not a real video player.</p></div>
+<div class="media-stage"><div class="media-art" role="img" aria-label="Illustrative dark product media stage"><span class="media-art__label" data-media-label>Story 01 / Design</span><button class="media-toggle" type="button" data-play aria-pressed="false" aria-label="Play media preview">▶</button></div>
+<div style="text-align:center;margin-top:22px"><div class="segmented" role="group" aria-label="Choose media story"><button type="button" aria-pressed="true" data-story="design">Design</button><button type="button" aria-pressed="false" data-story="camera">Camera</button><button type="button" aria-pressed="false" data-story="performance">Performance</button></div></div>
+<div class="media-caption" aria-live="polite"><strong data-story-title>Considered from every angle.</strong><span data-story-copy>Use the selector to switch the featured story while keeping the surrounding layout stable.</span></div></div>
+<p class="pattern-note">Playback control is a UI-state demonstration only. Connect a real video element before shipping a media player.</p></section>
+
+<section class="pattern-section" id="explorer"><div class="pattern-head"><div><p class="eyebrow">REF-17 · REF-28</p><h2>A feature explorer.</h2></div><p>Options sit in a clear group; the demonstration gets the larger canvas. On small screens, stack the options above the demo.</p></div>
+<div class="explorer" data-explorer><div><div class="explorer-options" role="group" aria-label="Choose explorer style"><button class="explorer-option" type="button" aria-pressed="true" data-explorer-option="balanced">Balanced</button><button class="explorer-option" type="button" aria-pressed="false" data-explorer-option="compact">Compact</button><button class="explorer-option" type="button" aria-pressed="false" data-explorer-option="immersive">Immersive</button></div><p class="explorer-status" aria-live="polite" data-explorer-status>Selected: Balanced view</p></div><div class="explorer-demo"><button class="explorer-close" type="button" data-explorer-close aria-label="Reset feature explorer">×</button><div class="explorer-device" data-explorer-device></div></div></div></section>
+
+<section class="pattern-section" id="metrics"><div class="pattern-head"><div><p class="eyebrow">REF-09 · REF-10 · REF-13 · REF-15 · REF-27</p><h2>Numbers need breathing room.</h2></div><p>Split explanatory copy from oversized metrics. Labels and units stay visible; numbers lead without decorative cards.</p></div>
+<div class="metrics"><div class="metrics-copy"><h3 style="font-size:28px;letter-spacing:-.03em;margin:0 0 10px">Performance, made clear.</h3><p>Use metrics only when the product has real evidence to support them. Keep footnotes and units close to the claim.</p></div><div class="metric-grid"><div class="metric"><strong>2.4×</strong><span>Illustrative speed gain*</span></div><div class="metric"><strong>48h</strong><span>Example battery claim*</span></div><div class="metric"><strong>99.9%</strong><span>Example reliability*</span></div></div></div><p class="pattern-note">All values are placeholders for demonstrating hierarchy—not product claims. Replace with validated measurements and source notes.</p></section>
+
+<section class="pattern-section"><div class="dark-stage"><p class="eyebrow" style="color:#86868b">REF-21—REF-30 · DARK MEDIA STAGE</p><h3>Black space. Focused message. Immersive media.</h3><p>Dark references use near-black canvases, high-contrast white headlines, restrained gray descriptions, and wide rounded media frames. Keep yellow or other vivid selection accents local to the relevant control.</p><div class="media-art" role="img" aria-label="Illustrative cinematic media frame"><span class="media-art__label">Cinematic media / illustrative</span></div></div></section>
+<section class="pattern-section"><p class="eyebrow">SOURCE OF TRUTH</p><h2>Use the reference corpus, not guesswork.</h2><p style="max-width:760px;color:var(--color-text-secondary);line-height:1.6">The bundled reference catalog maps all 30 screenshots to observed patterns. Token values remain estimates; exact pixel matching and animation timing require measured screenshots and live behavior tests.</p><div class="cluster" style="margin-top:20px"><a class="btn btn--secondary" href="../references/apple-reference-corpus/REFERENCE_CATALOG.md">Open catalog</a><a class="btn btn--secondary" href="../references/apple-reference-corpus/ANALYSIS.md">Open analysis</a><a class="btn btn--primary" href="index.html">Back to foundations</a></div></section>
+</main>
+<footer class="site-footer"><div class="container"><div class="footer-bottom"><span class="footer-copyright">Reference-informed design system · Prototype</span><nav class="footer-legal" aria-label="Footer navigation"><a href="index.html">Foundations</a><a href="cards-carousel.html">Cards & rails</a><a href="navigation-footer.html">Navigation & footer</a></nav><a href="#top">Back to top ↑</a></div></div></footer>
+<script src="script.js" defer></script>
+<script>
+document.querySelectorAll('.faq-question').forEach(btn=>btn.addEventListener('click',()=>{const panel=document.getElementById(btn.getAttribute('aria-controls'));const open=btn.getAttribute('aria-expanded')!=='true';btn.setAttribute('aria-expanded',String(open));panel.hidden=!open;const all=[...document.querySelectorAll('.faq-question')].every(b=>b.getAttribute('aria-expanded')==='true');const master=document.querySelector('[data-faq-all]');master.setAttribute('aria-expanded',String(all));master.textContent=all?'Collapse all −':'Expand all ＋';}));
+document.querySelector('[data-faq-all]').addEventListener('click',e=>{const expand=e.currentTarget.getAttribute('aria-expanded')!=='true';document.querySelectorAll('.faq-question').forEach(b=>{b.setAttribute('aria-expanded',String(expand));document.getElementById(b.getAttribute('aria-controls')).hidden=!expand;});e.currentTarget.setAttribute('aria-expanded',String(expand));e.currentTarget.textContent=expand?'Collapse all −':'Expand all ＋';});
+const stories={design:['Story 01 / Design','Considered from every angle.','Use the selector to switch the featured story while keeping the surrounding layout stable.'],camera:['Story 02 / Camera','Capture the details that matter.','The caption and selected option change together, without shifting the overall composition.'],performance:['Story 03 / Performance','More power, less friction.','Keep claims concise and pair numerical proof with clear units and footnotes.']};
+document.querySelectorAll('[data-story]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-story]').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));const s=stories[btn.dataset.story];document.querySelector('[data-media-label]').textContent=s[0];document.querySelector('[data-story-title]').textContent=s[1];document.querySelector('[data-story-copy]').textContent=s[2];document.querySelector('[data-play]').setAttribute('aria-pressed','false');document.querySelector('[data-play]').textContent='▶';document.querySelector('[data-play]').setAttribute('aria-label','Play media preview');}));
+document.querySelector('[data-play]').addEventListener('click',e=>{const playing=e.currentTarget.getAttribute('aria-pressed')!=='true';e.currentTarget.setAttribute('aria-pressed',String(playing));e.currentTarget.textContent=playing?'Ⅱ':'▶';e.currentTarget.setAttribute('aria-label',playing?'Pause media preview':'Play media preview');});
+const device=document.querySelector('[data-explorer-device]');const status=document.querySelector('[data-explorer-status]');
+function setExplorer(mode){document.querySelectorAll('[data-explorer-option]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.explorerOption===mode)));status.textContent='Selected: '+mode[0].toUpperCase()+mode.slice(1)+' view';device.style.transform=mode==='compact'?'scale(.78) rotate(-4deg)':mode==='immersive'?'scale(1.08) rotate(2deg)':'scale(1) rotate(0)';device.style.background=mode==='compact'?'linear-gradient(145deg,#d6e0e8,#a8b6c3 48%,#536574)':mode==='immersive'?'linear-gradient(145deg,#d9c5b5,#f0e6dd 48%,#826e61)':'linear-gradient(145deg,#c5d8e8,#e9edf0 48%,#7b8b9b)';}
+document.querySelectorAll('[data-explorer-option]').forEach(b=>b.addEventListener('click',()=>setExplorer(b.dataset.explorerOption)));
+document.querySelector('[data-explorer-close]').addEventListener('click',()=>setExplorer('balanced'));
+</script>
+</body></html>

@@ -1,0 +1,6 @@
+v0.6 static QA results
+
+light/script.js: PASS
+dark/script.js: PASS
+
+Scope: JavaScript syntax checks only; not a substitute for browser/device QA.
